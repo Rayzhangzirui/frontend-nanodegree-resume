@@ -13,7 +13,7 @@ var bio = {
 	},
 	"welcomeMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
 	"skills": ["JavaScript","HTML5","CSS3"],
-	"bioPic" : "images/me.png"
+	"bioPic" : "https://lh3.googleusercontent.com/TJXbuHM8KFn6JuG43LOc38gU0oJdlRoO1I64ncbUPj-y987ebZG89uFhB5Jf8R_tAbcp=w300"
 };
 
 bio.display = function () {
@@ -25,19 +25,19 @@ bio.display = function () {
 
 	// contacts
 	var formattedmobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-	$("#topContacts").append(formattedmobile);
+	$("#topContacts,#footerContacts").append(formattedmobile);
 
 	var formattedemail = HTMLemail.replace("%data%", bio.contacts.email);
-	$("#topContacts").append(formattedemail);
+	$("#topContacts,#footerContacts").append(formattedemail);
 
 	var formattedtwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
-	$("#topContacts").append(formattedtwitter);
+	$("#topContacts,#footerContacts").append(formattedtwitter);
 
 	var formattedgithub = HTMLgithub.replace("%data%", bio.contacts.github);
-	$("#topContacts").append(formattedgithub);
+	$("#topContacts,#footerContacts").append(formattedgithub);
 
 	var formattedlocation = HTMLlocation.replace("%data%", bio.contacts.location);
-	$("#topContacts").append(formattedlocation);
+	$("#topContacts,#footerContacts").append(formattedlocation);
 
 	//image 
 	var formattedPicture = HTMLbioPic.replace("%data%", bio.bioPic);
@@ -53,11 +53,9 @@ bio.display = function () {
 		var formattedSkill = HTMLskills.replace("%data%",bio.skills[indexCount]) ;
 		$("#header").append(formattedSkill);
 	}
-
-}
+};
 
 bio.display();
-
 
 var work = {
 	"jobs": [
@@ -93,8 +91,8 @@ work.display = function() {
 		var formattedDescription = HTMLworkDescription.replace("%data%", jobItem.description);
 		$(".work-entry:last").append(formattedDescription);	
 		}
-	)
-}
+	);
+};
 
 work.display();
 
@@ -104,7 +102,7 @@ var education = {
 		"name": "HKU",
 		"location": "Hong Kong",
 		"degree": "Bachelor",
-		"majors": "Engineering",
+		"majors": ["Engineering","CS"],
 		"dates": "2014-2016",
 		"url": "http://hku.hk/"
 	},
@@ -112,7 +110,7 @@ var education = {
 		"name": "UW madison",
 		"location": "Madison, WI",
 		"degree": "Bachelor",
-		"majors": "Engineering",
+		"majors": ["Engineering"],
 		"dates": "2016",
 		"url": "http://wisc.edu"
 	}],
@@ -124,7 +122,7 @@ var education = {
 		"dates":"2016",
 		"url": "http://udacity.com"
 	}]
-}
+};
 
 education.display =  function() {
 	education.schools.forEach ( function(schoolItem) { 
@@ -144,7 +142,7 @@ education.display =  function() {
 		var formattedMajor = HTMLschoolMajor.replace("%data%", schoolItem.majors);
 		$(".education-entry:last").append(formattedMajor);	
 		}
-	)
+	);
 
 	education.onlineCourses.forEach ( function(courseItem) { 
 		$("#education").append(HTMLonlineClasses);
@@ -161,8 +159,8 @@ education.display =  function() {
 		var formattedonlineURL = HTMLonlineURL.replace("%data%", courseItem.url);
 		$(".education-entry:last").append(formattedonlineURL);	
 		}
-	)
-}
+	);
+};
 
 education.display();
 
@@ -176,14 +174,13 @@ var projects = {
   	"images":[
 	    "http://stilltechnology.com/img/code.png",
 	    "http://stilltechnology.com/img/code.png"
-	]
+		]
   }
  ]
-}
+};
 
 projects.display =  function() {
-
-	projects.projects.forEach ( function(projectItem) {
+	projects.projects.forEach ( function (projectItem) {
 		$("#projects").append(HTMLprojectStart);
 		//title
 		var fomattedprojectTitle = HTMLprojectTitle.replace("%data%", projectItem.title);
@@ -199,12 +196,11 @@ projects.display =  function() {
 		var formattedprojectImage = HTMLprojectImage.replace("%data%", projectItem.images[indexCount]);
 		$(".project-entry:last").append(formattedprojectImage);	
 		}
-	})
-}
+	}
+ );
+};
 
 projects.display();
-
-$("#main").append(internationalizeButton);
 
 //append google map
 $("#mapDiv").append(googleMap);
